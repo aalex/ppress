@@ -1,0 +1,36 @@
+/**
+ * Style sheet.
+ */
+
+body
+{
+    margin: 0;
+    padding: 15px;
+
+    background-color: #afd9e0; /* bleu pale */
+    font-family: sans-serif;
+    color: #111;
+
+}
+
+#container
+{
+    display: block;
+    position: relative;
+    left: 25px;
+    top: 25px;
+    width: 80%;
+    padding: 15px;
+
+    background-color: #e0b6af; /* vieux rose */
+
+    border-style: solid;
+    border-color: #000000;
+    border-width: 4px;
+}
+
+a.test 
+{ 
+    font-weight: bold; 
+}
+
