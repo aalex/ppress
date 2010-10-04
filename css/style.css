@@ -2,3 +2,19 @@
  * Style sheet for colors, fonts and the like.
  * (not for the position of the divs)
  */
+
+.chinese {
+    text-size: 3.0em; /* big */
+}
+
+/* ppword: contains pptext and ppimage */
+.ppword {
+    
+}
+.pptext {
+    
+}
+.ppimage {
+    
+}
+

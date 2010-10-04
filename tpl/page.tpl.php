@@ -6,10 +6,8 @@
     <meta name="description" content="Chinese women bloggers in translation" />
     <meta name="keywords" content="Chinese,women,bloggers,translation,net,art" />
     <meta name="robots" content="index, follow" />
-    <!-- FIXME: this icon does not exist -->
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    </link>
+    <link rel="icon" type="image/png" href="images/favicon.png" />
     <link href="css/single_column.css" rel="stylesheet" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
@@ -37,23 +35,32 @@
     </ul>
 </div>
 
-<div class="colmask fullpage">
+<div class="colmask fullpage chinese">
     <div class="col1">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis dapibus nisi, nec tempor magna tempus ut. Sed eu orci at felis rutrum imperdiet. Ut venenatis adipiscing aliquet. Nunc eleifend vestibulum quam eget consectetur. Nulla quis ipsum urna, nec faucibus sem. Fusce id dolor arcu, eget scelerisque dolor. Fusce vestibulum, diam sit amet fringilla accumsan, velit mauris commodo risus, sed cursus justo ante at leo. Integer facilisis fringilla nisl. Maecenas in pulvinar tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla sem sapien, sollicitudin eu laoreet non, tincidunt sed urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec feugiat varius pellentesque. </p>
+        <p>Fill me with info about the project.</p>
         <p>&gt;Choose a blogger above</p>
     <?php foreach ($this->blogs as $blog_id => $blog): ?>
-        <?php $post = $blog[0]; ?>
-        <?php foreach ($post as $word_image): ?>
-            <?php $word = $word_image[0]; $image = $word_image[1]; ?>
-            <?php echo $word; ?>
-            <img src="<?php echo $image; ?>" />
+        <?php $post = $blog["posts"][0]; ?>
+        <?php foreach ($post["words"] as $word): ?>
+            <?php 
+            $text = $word["text"]; 
+            $image = $word["image"]; 
+            ?>
+            <span class="ppword">
+                <span class="pptext">
+                    <?php echo $text; ?>
+                </span>
+                <span class="ppimage">
+                    <img src="<?php echo $image; ?>" />
+                </span>
+            <span class="ppword">
         <?php endforeach; ?>
     <?php endforeach; ?>
     </div>
 </div>
 
 <div id="footer">
-    <p>Some contents is copyleft 2010. Images and blog posts are the property of their owner.</p>
+    <p><!-- All images are licensed under the Creative Commons License for their respective owner. --> </p>
 </div>
 
 </body>
