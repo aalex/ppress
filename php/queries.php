@@ -20,6 +20,16 @@
 
 // MySQL queries for the picture press
 
+function query($query, $values)
+{
+	$values = array_map(function ($value) {
+		return "'" . mysql_real_escape_string($value) . "'";
+	}, $values);
+	$query = str_replace(array_keys($values), array_values($values), $query);
+
+	return mysql_query($query);
+}
+
 /**
  * Returns an array whose values are all blog ID numbers.
  * @return: array int:int
@@ -84,4 +94,46 @@ function get_words_for_post($post_id)
     mysql_free_result($result);
     return $ret;
 }
-?>
+
+function get_all_words()
+{
+	$result = mysql_query('
+		SELECT DISTINCT `text` `word` FROM `word`
+		WHERE
+			`is_punctuation` = 0
+			AND `is_chinese` = 1
+		');
+
+	$words = array();
+	while ($row = mysql_fetch_assoc($result))
+	{
+		$words[] = $row['word'];
+	}
+
+	return $words;
+}
+
+function insert_image($url, $local)
+{
+	$info = getimagesize($local);
+	$width = array_shift($info);
+	$height = array_shift($info);
+
+	query('INSERT INTO `image` (`original_image_url`, `local_image_name`, `image_width`, `image_height`) VALUES(:url, :name, :width, :height)', array(
+		':url' => $url,
+		':name' => $local,
+		':width' => $width,
+		':height' => $height,
+	));
+
+	return mysql_insert_id();
+}
+
+function associate_word($word, $image_id)
+{
+	query('UPDATE `word` SET `has_an_image` = 1, image_is_downloaded = 1, image_id = :image WHERE `text` = :word', array(
+		':image' => $image_id,
+		':word' => $word,
+	));
+}
+

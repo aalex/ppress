@@ -267,7 +267,7 @@ if ( !class_exists('phpFlickr') ) {
 			}
 
 			//Process arguments, including method and login data.
-			$args = array_merge(array("method" => $command, "format" => "php_serial", "api_key" => $this->api_key), $args);
+			$args = array_merge(array("method" => $command, "format" => "json", "api_key" => $this->api_key), $args);
 			if (!empty($this->token)) {
 				$args = array_merge($args, array("auth_token" => $this->token));
 			} elseif (!empty($_SESSION['phpFlickr_auth_token'])) {
@@ -298,7 +298,8 @@ if ( !class_exists('phpFlickr') ) {
 			 * the result, so be sure that you look at the results.
 			 */
 			//$this->parsed_response = unserialize($this->response);
-			$this->parsed_response = $this->clean_text_nodes(unserialize($this->response));
+			$response = substr($this->response, strlen('jsonFlickrApi('), -1);
+			$this->parsed_response = $this->clean_text_nodes(json_decode($response, true));
 			if ($this->parsed_response['stat'] == 'fail') {
 				if ($this->die_on_error) die("The Flickr API returned the following error: #{$this->parsed_response['code']} - {$this->parsed_response['message']}");
 				else {
