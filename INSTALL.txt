@@ -1,0 +1,33 @@
+Dependencies
+------------
+
+eclipse
+sun-java6-jdk
+apache2
+mysql-client
+mysql-server
+php5
+python-flickrapi
+python-twisted-core
+
+
+Mysql config:
+-------------
+
+user: picturepress
+pass: picturepress
+db: picturepress
+
+(soon to be configurable)
+
+grant all privileges on picturepress.* to 'mysql'@'localhost';
+grant all privileges on picturepress.* to 'mysql'@'%';
+
+
+Priorities
+-----------
+
+Text + images scrolling, not the menu and transitions
+Black background + white text
+Landing page with about text + choose the blog. 
+
