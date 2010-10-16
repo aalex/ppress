@@ -4,7 +4,6 @@
  * 
  * Copyright (C) 2010 Ellen Tang <ellen.s.tang@gmail.com>
  * Copyright (C) 2010 Alexandre Quessy <alexandre@quessy.net>
- * Copyright (C) 2010 Yan Chen <sandrine.chen@gmail.com>
  * 
  * ppress is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,32 +19,58 @@
  * along with ppress.  If not, see <http://www.gnu.org/licenses/>.
  */
 // This file should be only included once.
-// Load config
-$CONFIG_SAMPLE = "config.example.php";
-$CONFIG_CUSTOM = "config.php";
-$config_custom_full_path = dirname(__FILE__) . "/" . $CONFIG_CUSTOM;
-$config_sample_full_path = dirname(__FILE__) . "/" . $CONFIG_SAMPLE;
-if (file_exists($config_custom_full_path))
-    require_once $config_custom_full_path;
-else
-    require_once $config_sample_full_path;
-$db_conn = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);
-if (!$db_conn)
-    die("Could not connect to MySQL database: " . mysql_error());
-if (PP_VERBOSE)
-    echo "Connected successfully\n";
+// Load config:
+$_config_custom_full_path = dirname(__FILE__) . "/" . "config.php";
+$_config_sample_full_path = dirname(__FILE__) . "/" . "config.example.php";
 
+if (file_exists($_config_custom_full_path))
+    require_once $_config_custom_full_path;
+else
+    require_once $_config_sample_full_path;
 /**
  * Prints if config set to verbose.
  */
 function verb($what)
 {
     if (PP_VERBOSE)
-        echo($what);
+    {
+        echo($what . "<br /> \n");
+    }
 }
+/**
+ * Add a path to the include path.
+ */
 function add_to_path($path)
 {
     set_include_path(get_include_path() . PATH_SEPARATOR . $path);
 }
+
+verb("Loaded config.");
+// Add stuff to the path
 add_to_path(dirname(__FILE__) . "/libs/phpflickr-3.0");
+add_to_path(dirname(__FILE__) . "/libs/Savant3-3.0.1");
+require_once "Savant3.php";
+
+/**
+ *  Connect to the MySQL database:
+ */
+function &db_connect()
+{
+    //FIXME: Something it hangs here.
+    // See http://bugs.php.net/bug.php?id=17581
+    verb("Connecting to the database:");
+    $db_conn =& mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);
+    if (!$db_conn)
+    {
+        verb("Could not connect to the MySQL database.");
+        die("MySQL error: " . mysql_error());
+    }
+    else
+    {
+        verb("Connected successfully to the database.");
+    }
+    verb("Done with the database.");
+    return $db_conn;
+}
+verb("Done bootstrapping.");
 ?>

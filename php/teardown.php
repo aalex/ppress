@@ -20,8 +20,8 @@
  * along with ppress.  If not, see <http://www.gnu.org/licenses/>.
  */
 // Tear down
-if ($db_conn)
-{
-    mysql_close($db_conn);
-}
+// if ($db_conn)
+// {
+//     mysql_close($db_conn);
+// }
 ?>

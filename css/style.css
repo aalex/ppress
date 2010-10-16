@@ -1,33 +1,4 @@
 /**
- * Style sheet.
+ * Style sheet for colors, fonts and the like.
+ * (not for the position of the divs)
  */
-
-body
-{
-    margin: 0;
-    padding: 15px;
-
-    background-color: #333333; /* gray */
-    font-family: sans-serif;
-    color: #ffffff; /* white */
-}
-
-#container
-{
-    display: block;
-    position: relative;
-    left: 25px;
-    top: 25px;
-    width: 80%;
-    padding: 15px;
-
-    background-color: #000000; /* black */
-
-    border: none;
-}
-
-a.test 
-{ 
-    font-weight: bold; 
-}
-

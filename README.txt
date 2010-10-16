@@ -12,7 +12,6 @@ ppress
 
 Copyright (C) 2010 Ellen Tang <ellen.s.tang@gmail.com>
 Copyright (C) 2010 Alexandre Quessy <alexandre@quessy.net>
-Copyright (C) 2010 Yan Chen <sandrine.chen@gmail.com>
 
 ppress is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
