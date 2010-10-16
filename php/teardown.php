@@ -19,19 +19,9 @@
  * You should have received a copy of the gnu general public license
  * along with ppress.  If not, see <http://www.gnu.org/licenses/>.
  */
-// This file should be only included once.
-// Load config
-$CONFIG_SAMPLE = "config.example.php";
-$CONFIG_CUSTOM = "config.php";
-$config_custom_full_path = dirname(__FILE__) . "/" . $CONFIG_CUSTOM;
-$config_sample_full_path = dirname(__FILE__) . "/" . $CONFIG_SAMPLE;
-if (file_exists($config_custom_full_path))
-    require_once $config_custom_full_path;
-else
-    require_once $config_sample_full_path;
-$db_conn = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);
-if (!$db_conn)
-    die("Could not connect to MySQL database: " . mysql_error());
-if (PP_VERBOSE)
-    echo "Connected successfully\n";
+// Tear down
+if ($db_conn)
+{
+    mysql_close($db_conn);
+}
 ?>

@@ -9,6 +9,8 @@ mysql-server
 php5
 python-flickrapi
 python-twisted-core
+php5-mysql
+php5-cli
 
 
 Mysql config:

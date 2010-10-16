@@ -3,7 +3,9 @@
 // Rename this file to config.php
 
 // Database settings
-$db_username = "picturepress";
-$db_database = "picturepress";
-$db_password = "picturepress";
+define("DB_USER", "picturepress");
+define("DB_DATABASE", "picturepress");
+define("DB_PASSWORD", "picturepress");
+define("DB_HOST", "localhost");
+define("PP_VERBOSE", TRUE);
 ?>
