@@ -1,6 +1,8 @@
 /**
  * Javascript script.
  */
+
+/*
 $(document).ready(function()
 {
     $("a").click(function(event)
@@ -11,4 +13,4 @@ $(document).ready(function()
     });
     $("a").addClass("test");
 });
-
+*/
