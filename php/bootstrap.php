@@ -47,6 +47,5 @@ function add_to_path($path)
 {
     set_include_path(get_include_path() . PATH_SEPARATOR . $path);
 }
-add_to_path(dirname(__FILE__) . "/../" . "phplibs/phpflickr-3.0");
-add_to_path("phplibs/phpflickr-3.0");
+add_to_path(dirname(__FILE__) . "/libs/phpflickr-3.0");
 ?>
