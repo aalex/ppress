@@ -34,4 +34,19 @@ if (!$db_conn)
     die("Could not connect to MySQL database: " . mysql_error());
 if (PP_VERBOSE)
     echo "Connected successfully\n";
+
+/**
+ * Prints if config set to verbose.
+ */
+function verb($what)
+{
+    if (PP_VERBOSE)
+        echo($what);
+}
+function add_to_path($path)
+{
+    set_include_path(get_include_path() . PATH_SEPARATOR . $path);
+}
+add_to_path(dirname(__FILE__) . "/../" . "phplibs/phpflickr-3.0");
+add_to_path("phplibs/phpflickr-3.0");
 ?>
