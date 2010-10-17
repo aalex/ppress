@@ -73,6 +73,7 @@ function &db_connect()
     {
         die("Unable to select database: " . mysql_error());
     }
+    mysql_set_charset('utf8');
     verb("Done with the database.");
     return $db_conn;
 }
