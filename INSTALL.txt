@@ -22,8 +22,8 @@ db: picturepress
 
 (soon to be configurable)
 
-grant all privileges on picturepress.* to 'mysql'@'localhost';
-grant all privileges on picturepress.* to 'mysql'@'%';
+GRANT ALL PRIVILEGES ON picturepress.* TO 'mysql'@'localhost';
+GRANT ALL PRIVILEGES ON picturepress.* TO 'mysql'@'%';
 
 
 Priorities
