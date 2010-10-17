@@ -25,10 +25,35 @@ echo "Bootstrapping:\n<br />";
 echo time() . "\n<br />";
 require_once "php/bootstrap.php";
 $db =& db_connect();
-$tpl =& new Savant3();
-//echo "Show the page:\n<br />";
-$tpl->display("tpl/page.tpl.php");
-//require_once "tpl/page.tpl.php";
+
+function check_queries()
+{
+    echo "<pre>";
+    $all_blog_ids = get_all_blog_id();
+    print_r($all_blog_ids);
+    foreach ($all_blog_ids as $k => $blog_id)
+    {
+        $post_id = get_post_for_blog($blog_id);
+        echo "Post ID:" . $post_id . "\n";
+        $words = get_words_for_post($post_id);
+        foreach ($words as $kk => $word)
+        {
+            echo $word . " | ";
+        }
+        echo "\n";
+    }
+    echo "<pre>";
+}
+check_queries();
+
+// $tpl =& new Savant3();
+// //echo "Show the page:\n<br />";
+// $tpl->display("tpl/page.tpl.php");
+// //require_once "tpl/page.tpl.php";
 require_once "php/teardown.php";
 verb("DONE.");
+
+
+
+
 ?>

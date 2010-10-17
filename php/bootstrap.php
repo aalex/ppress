@@ -62,12 +62,16 @@ function &db_connect()
     $db_conn =& mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);
     if (!$db_conn)
     {
-        verb("Could not connect to the MySQL database.");
+        verb("Could not connect to the MySQL server.");
         die("MySQL error: " . mysql_error());
     }
     else
     {
-        verb("Connected successfully to the database.");
+        verb("Connected successfully to the MySQL server.");
+    }
+    if (! mysql_select_db(DB_DATABASE)) 
+    {
+        die("Unable to select database: " . mysql_error());
     }
     verb("Done with the database.");
     return $db_conn;

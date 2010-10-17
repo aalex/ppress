@@ -27,16 +27,19 @@
  */
 function get_all_blog_id()
 {
-    $result = array();
+    $ret = array();
     $sql = "SELECT blog_id FROM blog;";
     $result = mysql_query($sql);
+    if (! $result)
+        die("Could not successfully run query ($sql) from DB: " . mysql_error());
     while ($row = mysql_fetch_assoc($result))
     {
+        print_r($row);
         // append to the array
-        $result[] = $row["blog_id"];
+        $ret[] = $row["blog_id"];
     }
     mysql_free_result($result);
-    return $result;
+    return $ret;
 }
 
 /**
@@ -48,16 +51,18 @@ function get_all_blog_id()
  */
 function get_post_for_blog($blog_id)
 {
-    $result = 0;
+    $ret = 0;
     $sql = "SELECT post_id FROM post WHERE blog_id = " . $blog_id . ";";
     $result = mysql_query($sql);
+    if (! $result)
+        die("Could not successfully run query ($sql) from DB: " . mysql_error());
     while ($row = mysql_fetch_assoc($result))
     {
-        $result = $row["post_id"];
+        $ret = $row["post_id"];
     }
     // TODO: return False or raise exception if there is none
     mysql_free_result($result);
-    return $result;
+    return $ret;
 }
 
 /**
@@ -66,16 +71,18 @@ function get_post_for_blog($blog_id)
  */
 function get_words_for_post($post_id)
 {
-    $result = array();
+    $ret = array();
     $sql = "SELECT text FROM word WHERE post_id = " . $post_id . " ORDER BY position_in_text;";
     $result = mysql_query($sql);
+    if (! $result)
+        die("Could not successfully run query ($sql) from DB: " . mysql_error());
     while ($row = mysql_fetch_assoc($result))
     {
         // append to array
-        $result[] = $row["text"];
+        $ret[] = $row["text"];
     }
     // TODO: return False or raise exception if there is none
     mysql_free_result($result);
-    return $result;
+    return $ret;
 }
 ?>
