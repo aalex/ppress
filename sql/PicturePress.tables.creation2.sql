@@ -35,7 +35,7 @@ CREATE TABLE word   (word_id INT NOT NULL,
 		    
 CREATE TABLE image   (image_id INT NOT NULL AUTO_INCREMENT,
 		     original_image_url VARCHAR(256),
-		     local_image_name VARCHAR(30),
+		     local_image_name VARCHAR(60),
 		     image_width INT,
 		     image_height INT,
 		     has_been_resized TINYINT,
