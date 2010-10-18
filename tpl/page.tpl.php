@@ -40,11 +40,20 @@
         <p>Fill me with info about the project.</p>
         <p>&gt;Choose a blogger above</p>
     <?php foreach ($this->blogs as $blog_id => $blog): ?>
-        <?php $post = $blog[0]; ?>
-        <?php foreach ($post as $word_image): ?>
-            <?php $word = $word_image[0]; $image = $word_image[1]; ?>
-            <?php echo $word; ?>
-            <img src="<?php echo $image; ?>" />
+        <?php $post = $blog["posts"][0]; ?>
+        <?php foreach ($post["words"] as $word): ?>
+            <?php 
+            $text = $word["text"]; 
+            $image = $word["image"]; 
+            ?>
+            <span class="ppword">
+                <span class="pptext">
+                    <?php echo $text; ?>
+                </span>
+                <span class="ppimage">
+                    <img src="<?php echo $image; ?>" />
+                </span>
+            <span class="ppword">
         <?php endforeach; ?>
     <?php endforeach; ?>
     </div>

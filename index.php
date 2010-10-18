@@ -25,22 +25,24 @@ require_once "php/bootstrap.php";
 // Get all posts
 $all_blog_ids = get_all_blog_id();
 // This array is in the form:
-// blog_id => array(post_id => array(array(word, image_path), ...))
-$all_posts = array();
+// blog_id => array("posts" => array(post_id => array("words" => array("text"=>word, "image"=>image_path), ...)))
+$all_blogs = array();
 foreach ($all_blog_ids as $k => $blog_id)
 {
-    $all_posts[$blog_id] = array();
+    $all_blogs[$blog_id] = array();
     $post_id = get_post_for_blog($blog_id);
-    $all_posts[$blog_id][0] = array();
+    $all_blogs[$blog_id]["posts"] = array();
+    $all_blogs[$blog_id]["posts"][0] = array();
+    $all_blogs[$blog_id]["posts"][0]["words"] = array();
     $words = get_words_for_post($post_id);
-    foreach ($words as $kk => $word)
+    foreach ($words as $kk => $text)
     {
-        $all_posts[$blog_id][0][] = array($word, "FILLME");
+        $all_blogs[$blog_id]["posts"][0]["words"][] = array("text"=>$text, "image"=>"FILLME");
         // TODO add images to this big array as well
     }
 }
 $tpl = new Savant3();
-$tpl->blogs = $all_posts;
+$tpl->blogs = $all_blogs;
 $tpl->display("tpl/page.tpl.php");
 require_once "php/teardown.php";
 ?>
