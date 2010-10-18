@@ -18,13 +18,13 @@
 
 			$('.bloglink').click(function () {
 				$('.toggle').hide();
-
 				var container = $(this).attr('href');
 				container = container.substr(container.indexOf('#')+1);
 
 				$('.toggle.' + container).show();
 			});
 
+            /** clicks on the first a#bloglink in the page. */
 			$('.bloglink:first').click();
 		});
 	</script>
@@ -38,18 +38,20 @@
     </div>
     
     <div class=topnav>
-        <a href="index.php">about</a> / <a href="index.php">contact</a>
+        <a class="bloglink" href="#about">About</a>
      </div>
 </div>
      
 <div id="blogmenu">
 	<ul>
 		<?php foreach ($this->blogs as $blog_id => $blog): ?>
-			<li>
+			<li class="bloginfo">
 				<a class="bloglink" href="#blog<?php echo $blog_id ?>"><img src="images/blogger<?php echo $blog_id ?>.jpg"/></a>
-				<div class="toggle blog<?php echo $blog_id ?>">
+				<span class="toggle blog<?php echo $blog_id ?>">
+                    <p>
 					<?php echo $blog['intro'] ?>
-				</div>
+                    </p>
+				</span>
 			</li>
 		<?php endforeach; ?>
 	</ul>
@@ -57,8 +59,10 @@
 
 <div class="colmask fullpage chinese">
     <div class="col1">
+    <div class="toggle about"> <!-- FIXME there is no way to come back to this -->
         <p>Fill me with info about the project.</p>
         <p>&gt;Choose a blogger above</p>
+    </div>
     <?php foreach ($this->blogs as $blog_id => $blog): ?>
 		<div class="toggle blog<?php echo $blog_id ?>">
         <?php $post = $blog["posts"][0]; ?>
