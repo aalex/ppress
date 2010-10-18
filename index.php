@@ -35,10 +35,9 @@ foreach ($all_blog_ids as $k => $blog_id)
     $all_blogs[$blog_id]["posts"][0] = array();
     $all_blogs[$blog_id]["posts"][0]["words"] = array();
     $words = get_words_for_post($post_id);
-    foreach ($words as $kk => $text)
+    foreach ($words as $kk => $result)
     {
-        $all_blogs[$blog_id]["posts"][0]["words"][] = array("text"=>$text, "image"=>"FILLME");
-        // TODO add images to this big array as well
+        $all_blogs[$blog_id]["posts"][0]["words"][] = $result;
     }
 }
 $tpl = new Savant3();
