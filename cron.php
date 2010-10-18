@@ -26,6 +26,8 @@ require_once("php/flickr.php");
 $flickr = new phpFlickr(FLICKR_APIKEY);
 $flickr->enableCache( "db", "mysql://" . DB_USER . ":" . DB_PASSWORD . "@" . DB_HOST . "/" . DB_DATABASE);
 
+reset_images();
+
 foreach (get_all_words() as $word) {
 	$info = get_first_for_word($flickr, $word);
 

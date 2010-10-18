@@ -43,27 +43,21 @@
 </div>
      
 <div id="blogmenu">
-    <ul>
-        <li><a href="blogger1.html"><img src="images/blogger1.jpg"/></a></li>
-        <li><a href="blogger2.html"><img src="images/blogger2.jpg"/></a></li>
-        <li><a href=""><img src="images/blogger3.jpg"/></a></li>
-        <li><a href=""><img src="images/blogger4.jpg"/></a></li>
-    </ul>
+	<ul>
+		<?php foreach ($this->blogs as $blog_id => $blog): ?>
+			<li>
+				<a class="bloglink" href="#blog<?php echo $blog_id ?>"><img src="images/blogger<?php echo $blog_id ?>.jpg"/></a>
+				<div class="toggle blog<?php echo $blog_id ?>">
+					<?php echo $blog['intro'] ?>
+				</div>
+			</li>
+		<?php endforeach; ?>
+	</ul>
 </div>
 
 <div class="colmask fullpage chinese">
     <div class="col1">
         <p>Fill me with info about the project.</p>
-		<div class="bloginfo">
-			<?php foreach ($this->blogs as $blog_id => $blog): ?>
-				<div class="blogger">
-					<a class="bloglink" href="#blog<?php echo $blog_id ?>"><img src="photo..."/></a>
-					<div class="toggle blog<?php echo $blog_id ?>">
-						<?php echo $blog['intro'] ?>
-					</div>
-				</div>
-			<?php endforeach; ?>
-		</div>
         <p>&gt;Choose a blogger above</p>
     <?php foreach ($this->blogs as $blog_id => $blog): ?>
 		<div class="toggle blog<?php echo $blog_id ?>">

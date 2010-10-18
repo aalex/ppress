@@ -20,7 +20,7 @@
 
 // MySQL queries for the picture press
 
-function query($query, $values)
+function query($query, $values = array())
 {
 	$values = array_map(function ($value) {
 		return "'" . mysql_real_escape_string($value) . "'";
@@ -141,5 +141,11 @@ function associate_word($word, $image_id)
 		':image' => $image_id,
 		':word' => $word,
 	));
+}
+
+function reset_images()
+{
+	query('TRUNCATE TABLE `image`');
+	query('UPDATE word SET image_id = NULL, has_image = 0, image_is_downloaded = 0');
 }
 
