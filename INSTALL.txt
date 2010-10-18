@@ -20,11 +20,15 @@ user: picturepress
 pass: picturepress
 db: picturepress
 
-(soon to be configurable)
+(configurable, the password on the server will not be those)
+
+GRANT ALL PRIVILEGES ON picturepress.* TO 'picturepress'@'%' IDENTIFIED BY 'picturepress';
+GRANT ALL PRIVILEGES ON picturepress.* TO 'picturepress'@'localhost' IDENTIFIED BY 'picturepress';
+
+I think those are wrong:
 
 GRANT ALL PRIVILEGES ON picturepress.* TO 'mysql'@'localhost';
 GRANT ALL PRIVILEGES ON picturepress.* TO 'mysql'@'%';
-
 
 Priorities
 -----------
