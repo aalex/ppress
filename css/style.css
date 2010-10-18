@@ -9,12 +9,12 @@
 
 /* ppword: contains pptext and ppimage */
 .ppword {
-    
 }
 .pptext {
-    
+    display:block;
 }
 .ppimage {
-    
+    display:block;
+    border: none;
 }
 
