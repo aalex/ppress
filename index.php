@@ -24,31 +24,28 @@ ini_set("error_reporting", E_ALL);
 //echo time() . "\n<br />";
 require_once "php/bootstrap.php";
 $db =& db_connect();
-
-function check_queries()
+// Get all posts
+$all_blog_ids = get_all_blog_id();
+// This array is in the form:
+// blog_id => array(post_id => array(array(word, image_path), ...))
+$all_posts = array();
+//print_r($all_blog_ids);
+foreach ($all_blog_ids as $k => $blog_id)
 {
-    ob_start(); // Buffers output
-    echo "<pre>";
-    $all_blog_ids = get_all_blog_id();
-    print_r($all_blog_ids);
-    foreach ($all_blog_ids as $k => $blog_id)
+    $all_posts[$blog_id] = array();
+    $post_id = get_post_for_blog($blog_id);
+    $all_posts[$blog_id][0] = array();
+    //echo "Post ID:" . $post_id . "\n";
+    //echo "Words:\n";
+    $words = get_words_for_post($post_id);
+    foreach ($words as $kk => $word)
     {
-        $post_id = get_post_for_blog($blog_id);
-        echo "Post ID:" . $post_id . "\n";
-        echo "Words:\n";
-        $words = get_words_for_post($post_id);
-        foreach ($words as $kk => $word)
-        {
-            echo $word . " | ";
-        }
-        echo "\n";
+        $all_posts[$blog_id][0][] = array($word, "FILLME");
+        // TODO add images to this big array as well
     }
-    echo "</pre>";
-    return ob_get_clean();
 }
-$text_from_db = check_queries();
-$tpl =& new Savant3();
-$tpl->words = $text_from_db;
+$tpl = new Savant3();
+$tpl->blogs = $all_posts;
 $tpl->display("tpl/page.tpl.php");
 require_once "php/teardown.php";
 ?>

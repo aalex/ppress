@@ -41,7 +41,14 @@
     <div class="col1">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis dapibus nisi, nec tempor magna tempus ut. Sed eu orci at felis rutrum imperdiet. Ut venenatis adipiscing aliquet. Nunc eleifend vestibulum quam eget consectetur. Nulla quis ipsum urna, nec faucibus sem. Fusce id dolor arcu, eget scelerisque dolor. Fusce vestibulum, diam sit amet fringilla accumsan, velit mauris commodo risus, sed cursus justo ante at leo. Integer facilisis fringilla nisl. Maecenas in pulvinar tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla sem sapien, sollicitudin eu laoreet non, tincidunt sed urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec feugiat varius pellentesque. </p>
         <p>&gt;Choose a blogger above</p>
-    <?php echo $this->words; ?>
+    <?php foreach ($this->blogs as $blog_id => $blog): ?>
+        <?php $post = $blog[0]; ?>
+        <?php foreach ($post as $word_image): ?>
+            <?php $word = $word_image[0]; $image = $word_image[1]; ?>
+            <?php echo $word; ?>
+            <img src="<?php echo $image; ?>" />
+        <?php endforeach; ?>
+    <?php endforeach; ?>
     </div>
 </div>
 
