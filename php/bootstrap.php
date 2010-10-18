@@ -2,7 +2,6 @@
 /**
  * ppress
  * 
- * Copyright (C) 2010 Ellen Tang <ellen.s.tang@gmail.com>
  * Copyright (C) 2010 Alexandre Quessy <alexandre@quessy.net>
  * 
  * ppress is free software: you can redistribute it and/or modify

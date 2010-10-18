@@ -7,10 +7,10 @@
                                                            
 
 This project contains the Web front-end to the Picture Press project, by Ellen Tang. 
+The following license terms are for this code only:
 
 ppress
 
-Copyright (C) 2010 Ellen Tang <ellen.s.tang@gmail.com>
 Copyright (C) 2010 Alexandre Quessy <alexandre@quessy.net>
 
 ppress is free software: you can redistribute it and/or modify
