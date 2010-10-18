@@ -48,6 +48,7 @@
             $url = $word["url"]; 
             $width = $word["width"]; 
             $height = $word["height"]; 
+            if ($text):
             ?>
             <span class="ppword">
                 <span class="pptext">
@@ -59,6 +60,7 @@
 					</a>
 				<?php endif; ?>
             </span>
+            <?php endif; ?>
         <?php endforeach; ?>
     <?php endforeach; ?>
     </div>
