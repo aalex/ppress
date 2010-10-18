@@ -1,0 +1,5 @@
+If a word is not in chinese, there is no image for it.
+If a word is a punctuation, there is no image for. 
+
+There is only one image per word. 
+
