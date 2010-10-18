@@ -13,11 +13,12 @@
 .ppword {
     float: left;
     line-height: 1em;
+    width: 74px;
 }
 .pptext {
     display:block;
     text-align: center;
-    font-size: 1.5em; /* big */
+    font-size: 1.2em; /* slightly bigger */
     padding-top: 10px;
 }
 a.ppimage {
