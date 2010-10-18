@@ -81,14 +81,20 @@ function get_post_for_blog($blog_id)
 function get_words_for_post($post_id)
 {
     $ret = array();
-    $sql = "SELECT text FROM word WHERE post_id = " . $post_id . " ORDER BY position_in_text;";
-    $result = mysql_query($sql);
+    $sql = "SELECT text, original_image_url url, local_image_name local, image_width width, image_height height
+		FROM word 
+		LEFT JOIN `image` ON `word`.`image_id` = `image`.`image_id`
+		WHERE post_id = :post ORDER BY position_in_text;";
+    $result = query($sql, array(
+		':post' => $post_id,
+	));
+
     if (! $result)
         die("Could not successfully run query ($sql) from DB: " . mysql_error());
     while ($row = mysql_fetch_assoc($result))
     {
         // append to array
-        $ret[] = $row["text"];
+        $ret[] = $row;
     }
     // TODO: return False or raise exception if there is none
     mysql_free_result($result);

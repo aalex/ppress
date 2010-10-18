@@ -44,16 +44,21 @@
         <?php foreach ($post["words"] as $word): ?>
             <?php 
             $text = $word["text"]; 
-            $image = $word["image"]; 
+            $local = $word["local"]; 
+            $url = $word["url"]; 
+            $width = $word["width"]; 
+            $height = $word["height"]; 
             ?>
             <span class="ppword">
                 <span class="pptext">
                     <?php echo $text; ?>
                 </span>
-                <span class="ppimage">
-                    <img src="<?php echo $image; ?>" />
-                </span>
-            <span class="ppword">
+				<?php if ($local): ?>
+					<a href="<?php echo $url ?>" class="ppimage">
+						<img src="<?php echo $local; ?>" width="<?php echo $width?>" height="<?php echo $height?>" />
+					</a>
+				<?php endif; ?>
+            </span>
         <?php endforeach; ?>
     <?php endforeach; ?>
     </div>
