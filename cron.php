@@ -27,13 +27,13 @@ $flickr = new phpFlickr(FLICKR_APIKEY);
 $flickr->enableCache( "db", "mysql://" . DB_USER . ":" . DB_PASSWORD . "@" . DB_HOST . "/" . DB_DATABASE);
 
 foreach (get_all_words() as $word) {
-	$url = get_first_for_word($flickr, $word);
+	$info = get_first_for_word($flickr, $word);
 
-    if ($url) {
+    if ($info) {
 		echo '.';
-		$local = PP_FILES_DIR . "/" . get_url_basename($url);
-		download_file($url, $local);
-		$id = insert_image($url, $local);
+		$local = PP_FILES_DIR . "/" . get_url_basename($info['thumb']);
+		download_file($info['thumb'], $local);
+		$id = insert_image($info['url'], $local);
 		associate_word($word, $id);
 	} else {
 		echo '!';

@@ -54,9 +54,28 @@ function get_first_for_word(&$flickr, $word)
     if (isset($result["photo"][0])) {
 		$photo = $result['photo'][0];
 
-		return $flickr->buildPhotoURL($photo, "Square");
+		return array(
+			'thumb' => $flickr->buildPhotoURL($photo, "Square"),
+			'url' => 'http://flic.kr/p/' . base_encode($photo['id'], '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'),
+		);
 	}
 }
+
+function base_encode($num, $alphabet) {
+	$base_count = strlen($alphabet);
+	$encoded = '';
+	while ($num >= $base_count) {
+		$div = $num/$base_count;
+		$mod = ($num-($base_count*intval($div)));
+		$encoded = $alphabet[$mod] . $encoded;
+		$num = intval($div);
+	}
+
+	if ($num) $encoded = $alphabet[$num] . $encoded;
+
+	return $encoded;
+}
+
 /**
  * Returns the extension for a file.
  * (probably useless)
