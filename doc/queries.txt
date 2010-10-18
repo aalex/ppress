@@ -1,0 +1,5 @@
+INSERT INTO blog SET blog_id=0, title="My Blog", author="me", intro="This author is very good.";
+INSERT INTO post SET blog_id=0, title="One post";
+INSERT INTO word SET word_id=2, post_id=1, text="你好";
+INSERT INTO word SET word_id=3, post_id=1, text="中文";
+
