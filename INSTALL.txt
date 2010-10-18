@@ -1,26 +1,30 @@
 Dependencies
 ------------
+These tools can be handy:
 
-eclipse
-sun-java6-jdk
-apache2
-mysql-client
-mysql-server
-php5
-python-flickrapi
-python-twisted-core
-php5-mysql
-php5-cli
+ * apache2
+ * mysql-client
+ * mysql-server
+ * php5
+ * php5-mysql
+ * php5-cli
+
+
+Other tools
+-----------
+Those might be useful too:
+
+ * eclipse
+ * sun-java6-jdk
 
 
 Mysql config:
 -------------
+You should use a different password, of course! It must be written to the config file. 
 
 user: picturepress
 pass: picturepress
 db: picturepress
-
-(configurable, the password on the server will not be those)
 
 GRANT ALL PRIVILEGES ON picturepress.* TO 'picturepress'@'%' IDENTIFIED BY 'picturepress';
 GRANT ALL PRIVILEGES ON picturepress.* TO 'picturepress'@'localhost' IDENTIFIED BY 'picturepress';
@@ -37,4 +41,13 @@ You must create the following directory:
 
  $ mkdir files
 
+
+Configuration
+-------------
+You must edit (and protect) your config file:
+
+ $ cp php/config.example.php php/config.php
+ $ chmod a-r php/config.php
+ $ chgrp www-data php/config.php
+ $ edit php/config.php
 
