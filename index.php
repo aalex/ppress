@@ -20,23 +20,18 @@
 ini_set("display_errors", "1");
 ini_set("error_reporting", E_ALL);
 
-//echo "Bootstrapping:\n<br />";
-//echo time() . "\n<br />";
 require_once "php/bootstrap.php";
-$db =& db_connect();
+
 // Get all posts
 $all_blog_ids = get_all_blog_id();
 // This array is in the form:
 // blog_id => array(post_id => array(array(word, image_path), ...))
 $all_posts = array();
-//print_r($all_blog_ids);
 foreach ($all_blog_ids as $k => $blog_id)
 {
     $all_posts[$blog_id] = array();
     $post_id = get_post_for_blog($blog_id);
     $all_posts[$blog_id][0] = array();
-    //echo "Post ID:" . $post_id . "\n";
-    //echo "Words:\n";
     $words = get_words_for_post($post_id);
     foreach ($words as $kk => $word)
     {

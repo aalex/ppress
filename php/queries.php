@@ -33,7 +33,7 @@ function get_all_blog_id()
         die("Could not successfully run query ($sql) from DB: " . mysql_error());
     while ($row = mysql_fetch_assoc($result))
     {
-        print_r($row);
+        //print_r($row);
         // append to the array
         $ret[] = $row["blog_id"];
     }

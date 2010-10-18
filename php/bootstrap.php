@@ -78,7 +78,8 @@ function &db_connect()
     verb("Done with the database.");
     return $db_conn;
 }
-require_once "php/queries.php";
 
+$db_conn =& db_connect();
+require_once "php/queries.php";
 verb("Done bootstrapping.");
 ?>
