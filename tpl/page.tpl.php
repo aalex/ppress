@@ -48,17 +48,21 @@
             $url = $word["url"]; 
             $width = $word["width"]; 
             $height = $word["height"]; 
+            if ($text):
             ?>
             <span class="ppword">
-                <span class="pptext">
-                    <?php echo $text; ?>
-                </span>
-				<?php if ($local): ?>
+				<?php if ($local): /* if there is an image to show */?>
 					<a href="<?php echo $url ?>" class="ppimage">
 						<img src="<?php echo $local; ?>" width="<?php echo $width?>" height="<?php echo $height?>" />
 					</a>
+                <?php else: ?>
+                    <span class="noimage">&nbsp;</span>
 				<?php endif; ?>
+                <span class="pptext">
+                    <?php echo $text; ?>
+                </span>
             </span>
+            <?php endif; ?>
         <?php endforeach; ?>
     <?php endforeach; ?>
     </div>
