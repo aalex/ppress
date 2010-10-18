@@ -23,25 +23,22 @@ ini_set("error_reporting", E_ALL);
 require_once "php/bootstrap.php";
 
 // Get all posts
-$all_blog_ids = get_all_blog_id();
+$all_blog_ids = get_all_blog();
 // This array is in the form:
 // blog_id => array("posts" => array(post_id => array("words" => array("text"=>word, "image"=>image_path), ...)))
 $all_blogs = array();
-foreach ($all_blog_ids as $k => $blog_id)
+foreach ($all_blog_ids as $blog)
 {
-    $all_blogs[$blog_id] = array();
+	$blog_id = $blog['blog_id'];
+
+    $all_blogs[$blog_id] = $blog;
     $post_id = get_post_for_blog($blog_id);
-    $all_blogs[$blog_id]["posts"] = array();
-    $all_blogs[$blog_id]["posts"][0] = array();
-    $all_blogs[$blog_id]["posts"][0]["words"] = array();
-    $words = get_words_for_post($post_id);
-    foreach ($words as $kk => $result)
-    {
-        $all_blogs[$blog_id]["posts"][0]["words"][] = $result;
-    }
+    $all_blogs[$blog_id]['posts'] = array(
+		array('words' => get_words_for_post($post_id)),
+	);
 }
 $tpl = new Savant3();
 $tpl->blogs = $all_blogs;
 $tpl->display("tpl/page.tpl.php");
 require_once "php/teardown.php";
-?>
+

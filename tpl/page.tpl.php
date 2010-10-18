@@ -12,6 +12,22 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
     <script src="js/picturepress.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.toggle').hide();
+
+			$('.bloglink').click(function () {
+				$('.toggle').hide();
+
+				var container = $(this).attr('href');
+				container = container.substr(container.indexOf('#')+1);
+
+				$('.toggle.' + container).show();
+			});
+
+			$('.bloglink:first').click();
+		});
+	</script>
 </head>
 <body>
 
@@ -38,8 +54,19 @@
 <div class="colmask fullpage chinese">
     <div class="col1">
         <p>Fill me with info about the project.</p>
+		<div class="bloginfo">
+			<?php foreach ($this->blogs as $blog_id => $blog): ?>
+				<div class="blogger">
+					<a class="bloglink" href="#blog<?php echo $blog_id ?>"><img src="photo..."/></a>
+					<div class="toggle blog<?php echo $blog_id ?>">
+						<?php echo $blog['intro'] ?>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		</div>
         <p>&gt;Choose a blogger above</p>
     <?php foreach ($this->blogs as $blog_id => $blog): ?>
+		<div class="toggle blog<?php echo $blog_id ?>">
         <?php $post = $blog["posts"][0]; ?>
         <?php foreach ($post["words"] as $word): ?>
             <?php 
@@ -64,6 +91,7 @@
             </span>
             <?php endif; ?>
         <?php endforeach; ?>
+		</div>
     <?php endforeach; ?>
     </div>
 </div>

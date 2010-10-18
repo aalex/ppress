@@ -34,10 +34,10 @@ function query($query, $values)
  * Returns an array whose values are all blog ID numbers.
  * @return: array int:int
  */
-function get_all_blog_id()
+function get_all_blog()
 {
     $ret = array();
-    $sql = "SELECT blog_id FROM blog;";
+    $sql = "SELECT blog_id, title, author, intro, URL FROM blog;";
     $result = mysql_query($sql);
     if (! $result)
         die("Could not successfully run query ($sql) from DB: " . mysql_error());
@@ -45,7 +45,7 @@ function get_all_blog_id()
     {
         //print_r($row);
         // append to the array
-        $ret[] = $row["blog_id"];
+        $ret[] = $row;
     }
     mysql_free_result($result);
     return $ret;
