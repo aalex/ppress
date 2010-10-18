@@ -26,7 +26,7 @@ CREATE TABLE `blog` (
   `blog_id` int(11) NOT NULL,
   `title` varchar(125) DEFAULT NULL,
   `author` varchar(30) DEFAULT NULL,
-  `intro` tinytext,
+  `intro` text,
   `URL` varchar(256) DEFAULT NULL,
   `crttime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updtime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -40,7 +40,7 @@ CREATE TABLE `blog` (
 
 LOCK TABLES `blog` WRITE;
 /*!40000 ALTER TABLE `blog` DISABLE KEYS */;
-INSERT INTO `blog` VALUES (1,'徐静雷','徐静雷','徐静雷的博客','http://www.sohu.net','2010-10-04 02:45:51','2010-10-04 02:45:51'),(2,'徐静雷','徐静雷','徐静雷的博客','http://www.sohu.net','2010-10-04 02:40:25','2010-10-04 02:40:25');
+INSERT INTO `blog` VALUES (1,'赵庭景美','Zhao Ting Jing Mei','<b>location</b>: Beijing<br/>\r\n<b>occupation</b>: oil painter<br/>\r\n<b>blog visits</b>: 88, 086<br/>\r\n<br/>\r\nShe came home one night to find her husband in bed with another woman, and live cast the whole thing on her microblog.<br/>','http://blog.sina.com.cn/zhaotingjingmei','2010-10-18 18:58:23','2010-10-06 13:49:39'),(2,'钟如九','Zhong Rujiu','<b>age</b>: 22<br/>			<b>location</b>: Yihuang county, Jiangxi<br/>\r\n<b>microblog readership</b>: 31,966<br/>\r\n<br/>\r\nChased by local police on her way to Beijing to petition against the forced demolition of her family’s home, she and her sister locked  themselves in the airport washroom and began texting bloggers and journalists for help. She updates her microblog from her mobile phone, with news of her family and the demolition resistance.<br/>','http://t.sina.com.cn/n/钟如九','2010-10-18 19:00:25','2010-10-06 13:53:01'),(3,'洪晃','Hong Huang','b>location</b>: Beijing<br/\r\n<b>occupation</b>: Chief executive of China Interactive Media Group<br/>\r\n<b>blog visits</b>: 113,369,616<br/>\r\n<br/>\r\nShe is an influential media mogul, publisher of fashion magazines, the ex-wife of a famous film director, a mother, and the daughter of a diplomatic family. <br/>','http://blog.sina.com.cn/honghuang','2010-10-18 19:02:31','0000-00-00 00:00:00'),(4,'流氓燕','Hooligan Sparrow','<b>location</b>: Wuhan<br/>\r\n<b>occupation</b>: community organizer<br/>\r\n<b>blog visits</b>: 3,048,638<br/>\r\n<br/>\r\nShe first caused a sensation for posting nude photos of herself online, and writing candidly about sex and relationships. She now runs a women\'s rights organization and was recently detained by authorities for organizing a petition campaign for the legalization of sex work after a government “vice crackdown” on pornography and prostitution. <br/>','http://452598814.qzone.qq.com/','2010-10-18 19:03:30','0000-00-00 00:00:00'),(5,'丁婆','Dimple','<b>location</b>: Montreal, Canada\r\n<br/>\r\n<b>occupation</b>: student, translator<br/>\r\n<b>blog hits</b>: 13<br/>\r\n<br/>\r\nSome things in her life are easier to say online, to total strangers, than to tell her friends.<br/>','http://dimplewan.wordpress.com/','2010-10-18 19:04:34','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `blog` ENABLE KEYS */;
 UNLOCK TABLES;
 
