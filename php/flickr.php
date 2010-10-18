@@ -38,7 +38,7 @@ function get_first_for_word(&$flickr, $word)
 {
     // TODO most relevant, not interesting
     // Search for most interesting photos with the text "cat"
-    $args = array("text" => $word, "sort" => "interestingness-desc", "per_page" => 1);
+    $args = array("text" => $word, "sort" => "relevance", "per_page" => 1);
     $result = $flickr->photos_search($args);
     // TODO treat this error in case there is none
     $photo = $result["photo"][0];
@@ -66,11 +66,15 @@ function get_url_basename($url)
 $words = array();
 $words[] = "你好";
 $words[] = "中文";
+$words[] = "cat";
 
 foreach ($words as $word)
 {
-    $url = get_first_for_word($flickr, $words[0]);
-    download_file($url, PP_FILES_DIR . "/" . get_url_basename($url));
-    ?><img src="<?php echo $url; ?>" /><?php
+    $url = get_first_for_word($flickr, $word);
+    $local = PP_FILES_DIR . "/" . get_url_basename($url);
+    download_file($url, $local);
+    echo "------------\n";
+    echo "<img src=\"$url\" />\n";
+    echo "<img src=\"$local\" />\n";
 }
 ?>
