@@ -12,20 +12,38 @@
 /* ppword: contains pptext and ppimage */
 .ppword {
     float: left;
-    line-height: 1em;
-    width: 74px;
+    min-height: 120px;
+    display:block;
+    margin-top: 20px;
 }
+
 .pptext {
     display:block;
     text-align: center;
+    /* line-height: 1.2em; */
     font-size: 1.2em; /* slightly bigger */
+    width: 75px;
     padding-top: 10px;
+    /* height: 2.0em; */
 }
+
 a.ppimage {
-    display: inline;
+    display: block;
     border: none;
+    /* position: relative; */
+    width: 75px;
+    height: 75px;
 }
+
 .ppimage img {
     border: none;
+}
+
+.noimage {
+    display: block;
+    /* position: relative; */
+    width: 75px;
+    height: 75px;
+    background-color: #000;
 }
 
