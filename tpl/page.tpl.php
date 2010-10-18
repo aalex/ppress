@@ -47,7 +47,7 @@
 		<?php foreach ($this->blogs as $blog_id => $blog): ?>
 			<li class="bloginfo">
 				<a class="bloglink" href="#blog<?php echo $blog_id ?>"><img src="images/blogger<?php echo $blog_id ?>.jpg"/></a>
-				<span class="toggle blog<?php echo $blog_id ?>">
+				<span class="toggle blog<?php echo $blog_id ?> bloggerbio">
                     <p>
 					<?php echo $blog['intro'] ?>
                     </p>

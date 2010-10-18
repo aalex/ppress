@@ -94,20 +94,17 @@
 		text-decoration:none;
 		position:relative;
 	}
-	
-	
 	#blogmenu ul li a:hover {
-	color:black;
-	background-color:white;
+        color:black;
+        background-color:white;
 	}
 	
 	#blogmenu .bloggerbio {
-	float:left;
-	margin:20px 0 0 5px;
-	width:300px;
-	height:100px;
-	color:black;
-	overflow:hidden;
+        font-size: 0.8em;
+        float:left;
+        margin:20px 0 0 5px;
+        width:400px;
+        color:black;
 	}
 	
 	
@@ -122,8 +119,6 @@
 	color:white;
 	background-color:black;
 	}
-	
-	
 	
 	/* 'widths' sub menu */
 	#layoutdims {

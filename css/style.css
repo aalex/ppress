@@ -3,13 +3,6 @@
  * (not for the position of the divs)
  */
 
-.bloginfo {
-    /* display: inline; */
-    display: block;
-    width: 200px;
-    max-width: 200px;
-}
-
 .chinese {
     background-color: #000 !important;
     color: #fff;
