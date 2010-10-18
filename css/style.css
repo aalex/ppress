@@ -4,17 +4,27 @@
  */
 
 .chinese {
-    text-size: 3.0em; /* big */
+    background-color: #000 !important;
+    color: #fff;
+    display:block;
 }
 
 /* ppword: contains pptext and ppimage */
 .ppword {
+    float: left;
+    line-height: 1em;
 }
 .pptext {
     display:block;
+    text-align: center;
+    font-size: 1.5em; /* big */
+    padding-top: 10px;
 }
-.ppimage {
-    display:block;
+a.ppimage {
+    display: inline;
+    border: none;
+}
+.ppimage img {
     border: none;
 }
 
