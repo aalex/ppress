@@ -13,6 +13,9 @@ require_once("phpFlickr.php");
  */
 function download_file($remote, $local)
 {
+    // TODO do not download if file exists
+    // TODO handle errors!
+    //if (dirname($local)
     $ch = curl_init($remote);
     $fp = fopen($local, "w");
 
@@ -25,21 +28,49 @@ function download_file($remote, $local)
 }
 
 // Create new phpFlickr object
-$flickr = new phpFlickr(FLICKR_APIKEY);
+$flickr =& new phpFlickr(FLICKR_APIKEY);
 $flickr->enableCache( "db", "mysql://" . DB_USER . ":" . DB_PASSWORD . "@" . DB_HOST . "/" . DB_DATABASE);
-
-echo "<p>Most interesting in a full text search for \"cat\":<br>\n";
-// Search for most interesting photos with the text "cat"
-$photos_cat = $flickr->photos_search(array("text"=>"cat", "sort"=>"interestingness-desc", "per_page"=>1));
-foreach ((array)$photos_cat['photo'] as $photo) {
-    // Build image and link tags for each photo
-    echo "<a href=http://www.flickr.com/photos/$photo[owner]/$photo[id]>";
-    echo "<img border='0' alt='$photo[title]' ". "src=" . $flickr->buildPhotoURL($photo, "Square") . ">";
-    echo "</a>";
+/**
+ * Returns the URL or the most relevant image for a given word.
+ * @param $word: string
+ */
+function get_first_for_word(&$flickr, $word)
+{
+    // TODO most relevant, not interesting
+    // Search for most interesting photos with the text "cat"
+    $args = array("text" => $word, "sort" => "interestingness-desc", "per_page" => 1);
+    $result = $flickr->photos_search($args);
+    // TODO treat this error in case there is none
+    $photo = $result["photo"][0];
+    return $flickr->buildPhotoURL($photo, "Square");
 }
-echo "</p>\n";
+/**
+ * Returns the extension for a file.
+ * (probably useless)
+ */
+function get_extension($url)
+{
+    $_tmp = explode(".", $url);
+    $extension = array_pop($_tmp);
+    return $extension;
+}
+/**
+ * Returns the file name for a given URL.
+ */
+function get_url_basename($url)
+{
+    $path = parse_url($url, PHP_URL_PATH);
+    return basename($path);
+}
+// just a test:
+$words = array();
+$words[] = "你好";
+$words[] = "中文";
 
-
-
-
+foreach ($words as $word)
+{
+    $url = get_first_for_word($flickr, $words[0]);
+    download_file($url, PP_FILES_DIR . "/" . get_url_basename($url));
+    ?><img src="<?php echo $url; ?>" /><?php
+}
 ?>

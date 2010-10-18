@@ -23,6 +23,8 @@
 $_config_custom_full_path = dirname(__FILE__) . "/" . "config.php";
 $_config_sample_full_path = dirname(__FILE__) . "/" . "config.example.php";
 
+define("PP_FILES_DIR", "files");
+
 if (file_exists($_config_custom_full_path))
     require_once $_config_custom_full_path;
 else
