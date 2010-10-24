@@ -1,4 +1,7 @@
 php/config.php
 *.swp
 *~
-files
+files/*.png
+files/*.jpg
+files/*.gif
+
