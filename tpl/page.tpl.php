@@ -60,8 +60,7 @@
 <div class="colmask fullpage chinese">
     <div class="col1">
     <div class="toggle about"> <!-- FIXME there is no way to come back to this -->
-        <p>Fill me with info about the project.</p>
-        <p>&gt;Choose a blogger above</p>
+        <?php require "tpl/about.tpl.php"; ?>
     </div>
     <?php foreach ($this->blogs as $blog_id => $blog): ?>
 		<div class="toggle blog<?php echo $blog_id ?>">
@@ -95,7 +94,7 @@
 </div>
 
 <div id="footer">
-    <p><!-- All images are licensed under the Creative Commons License for their respective owner. --> </p>
+    <?php require "tpl/footer.tpl.php"; ?>
 </div>
 
 </body>
