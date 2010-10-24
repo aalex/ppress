@@ -44,7 +44,7 @@ function download_file($remote, $local)
  * Returns the URL or the most relevant image for a given word.
  * @param $word: string
  */
-function get_first_for_word(&$flickr, $word)
+function get_first_image_for_word(&$flickr, $word)
 {
     // TODO most relevant, not interesting
     // Search for most interesting photos with the text "cat"
