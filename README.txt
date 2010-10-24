@@ -11,6 +11,7 @@ The following license terms are for this code only:
 
 ppress
 
+Copyright (C) 2010 Ellen Tang <hello@ellentang.com>
 Copyright (C) 2010 Alexandre Quessy <alexandre@quessy.net>
 
 ppress is free software: you can redistribute it and/or modify
