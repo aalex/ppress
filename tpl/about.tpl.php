@@ -1,7 +1,7 @@
 <!-- this is the about page -->
 <h3>About the project</h3>
 
-<p>“It’s Chinese to Me” is an experiment to let Chinese women speak in their own words, by circumventing language barriers through technological means. Because even though China and its people are the <a href="http://www.languagemonitor.com/news/top-news-stories-of-the-decade/" target="_new">most written about topic</a> in the English-language media, we know so little about their lives. Today, despite being under the constant watch of state censors, the Chinese-language web hosts over 100 million blogs, written by some <a href="http://www.chinadaily.com.cn/china/2009-01/06/content_7372280.htm" target="_new">50 million individuals</a> who have they want to say.</p>
+<p>“It’s Chinese to Me” is an experiment to listen to Chinese women speak in their own words, by circumventing language barriers through technological means. Because even though China and its people are the <a href="http://www.languagemonitor.com/news/top-news-stories-of-the-decade/" target="_new">most written about topic</a> in the English-language media, we know so little about their lives. Today, despite being under the constant watch of state censors, the Chinese-language web hosts over 100 million blogs, written by some <a href="http://www.chinadaily.com.cn/china/2009-01/06/content_7372280.htm" target="_new">50 million individuals</a> who have something they want to say.</p>
 
 <p>What’s with <a href="http://www.omniglot.com/language/idioms/incomprehensible.php" target="_new">the title</a>, you ask?</p>
 

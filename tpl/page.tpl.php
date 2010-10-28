@@ -34,7 +34,7 @@
 <div id="header">
     <div id="title">
         <h1><a href="index.html">It's Chinese To Me</a></h1>
-        <h2>A visual decoder for women's blogs</h2>
+        <h2>A visual decoder for women's lives</h2>
     </div>
     
     <div class=topnav>

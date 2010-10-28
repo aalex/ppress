@@ -1,1 +1,1 @@
-<p><a href="http://www.ellentang.com/">Ellen Tang</a></p>
+<p>You can reach us by email at <strong>info@itschinesetome.net</strong></p>
