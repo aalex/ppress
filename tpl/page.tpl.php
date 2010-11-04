@@ -34,11 +34,13 @@
 <div id="header">
     <div id="title">
         <h1><a href="index.html">It's Chinese To Me</a></h1>
-        <h2>A visual decoder for women's blogs</h2>
+        <h2>A visual decoder for women's lives</h2>
     </div>
     
     <div class=topnav>
-        <a class="bloglink" href="#about">About</a>
+        <a class="bloglink" href="#how">How does it work?</a> / 
+        <a class="bloglink" href="#about">About</a> / 
+        <a class="bloglink" href="#contact">Contact</a>
      </div>
 </div>
      
@@ -59,9 +61,14 @@
 
 <div class="colmask fullpage chinese">
     <div class="col1">
-    <div class="toggle about"> <!-- FIXME there is no way to come back to this -->
-        <p>Fill me with info about the project.</p>
-        <p>&gt;Choose a blogger above</p>
+    <div class="toggle about">
+        <?php require "tpl/about.tpl.php"; ?>
+    </div>
+    <div class="toggle how">
+        <?php require "tpl/how.tpl.php"; ?>
+    </div>
+    <div class="toggle contact">
+        <?php require "tpl/contact.tpl.php"; ?>
     </div>
     <?php foreach ($this->blogs as $blog_id => $blog): ?>
 		<div class="toggle blog<?php echo $blog_id ?>">
@@ -95,7 +102,7 @@
 </div>
 
 <div id="footer">
-    <p><!-- All images are licensed under the Creative Commons License for their respective owner. --> </p>
+    <?php require "tpl/footer.tpl.php"; ?>
 </div>
 
 </body>

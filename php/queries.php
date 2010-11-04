@@ -20,11 +20,14 @@
 
 // MySQL queries for the picture press
 
+function _esc($value) 
+{
+	return "'" . mysql_real_escape_string($value) . "'";
+}
+
 function query($query, $values = array())
 {
-	$values = array_map(function ($value) {
-		return "'" . mysql_real_escape_string($value) . "'";
-	}, $values);
+	$values = array_map("_esc", $values);
 	$query = str_replace(array_keys($values), array_values($values), $query);
 
 	return mysql_query($query);

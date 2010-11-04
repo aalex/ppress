@@ -29,7 +29,7 @@ $flickr->enableCache( "db", "mysql://" . DB_USER . ":" . DB_PASSWORD . "@" . DB_
 reset_images();
 
 foreach (get_all_words() as $word) {
-	$info = get_first_for_word($flickr, $word);
+	$info = get_first_image_for_word($flickr, $word);
 
     if ($info) {
 		echo '.';
