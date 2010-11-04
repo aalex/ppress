@@ -9,4 +9,4 @@ CREATE TABLE `post` (
   PRIMARY KEY (`post_id`),
   KEY `blog_id` (`blog_id`),
   CONSTRAINT `post_ibfk_1` FOREIGN KEY (`blog_id`) REFERENCES `blog` (`blog_id`)
-) AUTO_INCREMENT=8 DEFAULT CHARACTER SET=utf8;
+) AUTO_INCREMENT=8 DEFAULT CHARACTER SET UTF8;
