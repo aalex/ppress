@@ -64,7 +64,8 @@ foreach ($words as $word_data) {
         $image_id = insert_image($info['url'], $local);
         if ($image_id != NULL)
         {
-            associate_word($word, $image_id);
+            $num_updated = associate_word($word, $image_id);
+            $log->log("updated " . $num_updated . " word entries with the new image_id.");
         } else {
             $log->log("ERROR: Could not get image size for ". $local . " for word " . $word);
         }

@@ -153,6 +153,7 @@ function associate_word($text, $image_id)
 		':image_id' => $image_id,
 		':text' => $text,
 	));
+    return mysql_affected_rows();
 }
 
 function reset_images()
