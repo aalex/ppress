@@ -65,3 +65,9 @@ SELECT text, original_image_url url, local_image_name local, image_width width, 
     ORDER BY position_in_text;
 
 
+To update the static HTML
+-------------------------
+
+SSH to the server and run this:
+
+ ./public_html/update-static-html.sh
