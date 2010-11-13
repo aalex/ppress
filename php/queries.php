@@ -147,11 +147,11 @@ function insert_image($url, $local)
     }
 }
 
-function associate_word($word_id, $image_id)
+function associate_word($text, $image_id)
 {
-	query('UPDATE `word` SET `has_an_image` = 1, image_is_downloaded = 1, image_id = :image WHERE `word_id` = :word_id', array(
-		':image' => $image_id,
-		':word_id' => $word_id,
+	query('UPDATE `word` SET `has_an_image` = 1, image_is_downloaded = 1, image_id = :image_id WHERE `text` = :text', array(
+		':image_id' => $image_id,
+		':text' => $text,
 	));
 }
 

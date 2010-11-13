@@ -61,10 +61,10 @@ foreach ($words as $word_data) {
             download_file($info['thumb'], $local);
             $log->log("NEW: Downloaded image ". $local . " for word " . $word);
         }
-        $id = insert_image($info['url'], $local);
-        if ($id != NULL)
+        $image_id = insert_image($info['url'], $local);
+        if ($image_id != NULL)
         {
-            associate_word($word_id, $id);
+            associate_word($word, $image_id);
         } else {
             $log->log("ERROR: Could not get image size for ". $local . " for word " . $word);
         }
