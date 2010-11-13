@@ -51,6 +51,7 @@ function get_first_image_for_word(&$flickr, $word)
     // TODO most relevant, not interesting
     // Search for most interesting photos with the text "cat"
     $args = array("text" => $word, "sort" => "relevance", "per_page" => 1);
+    $args = array("text" => $word); //, "sort" => "relevance", "per_page" => 1);
     $result = $flickr->photos_search($args);
     // TODO treat this error in case there is none
     if (isset($result["photo"][0])) {
@@ -58,7 +59,7 @@ function get_first_image_for_word(&$flickr, $word)
 
 		return array(
 			'thumb' => $flickr->buildPhotoURL($photo, "Square"),
-			'url' => 'http://flic.kr/p/' . base_encode($photo['id'], '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'),
+			'url' => 'http://flic.kr/p/' . base_encode($photo['id'], '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'), // flickrs use non-standard base-58 encoded url
 		);
 	}
 }
