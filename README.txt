@@ -44,3 +44,24 @@ The navigation uses Javascript. There is only one HTML (PHP) page, and there are
 To look at the log, do this:
 
 tail -F public_html/logging-cron-output.log
+
+Database stuff
+--------------
+
+See php/config.php for the db credentials.
+
+Useful MySQL queries
+--------------------
+
+SELECT COUNT(*) AS `count`, `image_id`, `text`  FROM word GROUP BY `image_id` ORDER BY `count` DESC LIMIT 50;
+
+SELECT `text` FROM `word` WHERE `image_id` = 127 LIMIT 50;
+
+SELECT text, original_image_url url, local_image_name local, image_width width, image_height height
+    FROM word 
+    LEFT JOIN `image` ON `word`.`image_id` = `image`.`image_id`
+    WHERE post_id = 1 
+    AND text = '水'
+    ORDER BY position_in_text;
+
+
