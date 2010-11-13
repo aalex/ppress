@@ -21,7 +21,7 @@
 // MySQL queries for the picture press
 
 
-function _esc($value) 
+function funky_esc($value) 
 {
         return "'" . mysql_real_escape_string($value) . "'";
 }
@@ -29,7 +29,7 @@ function _esc($value)
 
 function query($query, $values = array())
 {
-	$values = array_map(_esc, $values);
+	$values = array_map("funky_esc", $values);
 	$query = str_replace(array_keys($values), array_values($values), $query);
 
 	return mysql_query($query);
