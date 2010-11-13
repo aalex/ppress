@@ -33,7 +33,7 @@
 
 <div id="header">
     <div id="title">
-        <h1><a href="index.html">It's Chinese To Me</a></h1>
+	<a href="#how"><h1>It's Chinese to me</h1></a>
         <h2>A visual decoder for women's lives</h2>
     </div>
     
