@@ -111,6 +111,7 @@ function get_all_words()
 		WHERE
 			`is_punctuation` = 0
 			AND `is_chinese` = 1
+        ORDER BY `post_id`
 		');
 
 	$words = array();
@@ -125,17 +126,24 @@ function get_all_words()
 function insert_image($url, $local)
 {
 	$info = getimagesize($local);
-	$width = array_shift($info);
-	$height = array_shift($info);
+    if (is_array($info))
+    {
+        $width = array_shift($info);
+        $height = array_shift($info);
 
-	query('INSERT INTO `image` (`original_image_url`, `local_image_name`, `image_width`, `image_height`) VALUES(:url, :name, :width, :height)', array(
-		':url' => $url,
-		':name' => $local,
-		':width' => $width,
-		':height' => $height,
-	));
+        query('INSERT INTO `image` (`original_image_url`, `local_image_name`, `image_width`, `image_height`) VALUES(:url, :name, :width, :height)', array(
+            ':url' => $url,
+            ':name' => $local,
+            ':width' => $width,
+            ':height' => $height,
+        ));
 
-	return mysql_insert_id();
+        return mysql_insert_id();
+    }
+    else 
+    {
+        return NULL;
+    }
 }
 
 function associate_word($word, $image_id)
