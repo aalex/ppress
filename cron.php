@@ -35,7 +35,12 @@ $flickr->enableCache( "db", "mysql://" . DB_USER . ":" . DB_PASSWORD . "@" . DB_
 $log->log("TRUNCATE: We empty the `word` table completely.");
 reset_images();
 
-foreach (get_all_words() as $word) {
+$words = &get_all_words();
+$log->log("There are ". count($words) . " unique words to download images for!");
+
+foreach ($words as $word_data) {
+    $word = $word_data["word"];
+    $word_id = $word_data["word_id"];
     $info = get_first_image_for_word($flickr, $word);
     usleep(1000 * PP_SLEEP_BETWEEN_EACH_FLICK_QUERY_MS);
 
@@ -48,24 +53,24 @@ foreach (get_all_words() as $word) {
             if (file_exists($local))
             {
                 $download_it = FALSE;
-                $log->log("We already have the ". $local . " image for word " . $word . ". Not downloading it.");
+                $log->log("old: We already have the ". $local . " image for word " . $word . ". Not downloading it.");
             }
         }
         if ($download_it)
         {
             download_file($info['thumb'], $local);
-            $log->log("Downloaded image ". $local . " for word " . $word);
+            $log->log("NEW: Downloaded image ". $local . " for word " . $word);
         }
         $id = insert_image($info['url'], $local);
         if ($id != NULL)
         {
-            associate_word($word, $id);
+            associate_word($word_id, $id);
         } else {
-            $log->log("Error: Could not get image size for ". $local . " for word " . $word);
+            $log->log("ERROR: Could not get image size for ". $local . " for word " . $word);
         }
     } else {
         echo '!';
-        $log->log("Could not find an image URL from Flickr for word " . $word);
+        $log->log("NOT FOUND: Could not find an image URL from Flickr for word " . $word);
     }
 }
 
