@@ -29,7 +29,7 @@ function query($query, $values = array())
 {
 	$values = array_map("_esc", $values);
 	$query = str_replace(array_keys($values), array_values($values), $query);
-
+    //print $query . "\n";
 	return mysql_query($query);
 }
 
