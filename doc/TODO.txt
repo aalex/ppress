@@ -1,0 +1,16 @@
+Priorities
+-----------
+
+TODO - investigate why Flickr image search doesn't work!
+TODO - when you land on the page, load is weird
+TODO - display post date in interface
+
+DONE: - insert new blogger descriptions
+DONE: - fix broken links (for "contact" page)
+DONE: - add new landing page
+DONE: - reinsert word 1 of post 1
+
+Text + images scrolling, not the menu and transitions
+Black background + white text
+Landing page with about text + choose the blog. 
+
