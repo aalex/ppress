@@ -16,7 +16,7 @@
 		$(document).ready(function() {
 			$('.toggle').hide();
 
-			$('.bloglink').click(function () {
+			$('.magiclink').click(function () {
 				$('.toggle').hide();
 				var container = $(this).attr('href');
 				container = container.substr(container.indexOf('#')+1);
@@ -24,8 +24,8 @@
 				$('.toggle.' + container).show();
 			});
 
-            /** clicks on the first a#bloglink in the page. */
-			$('.bloglink:first').click();
+            /** clicks on the first a#magiclink in the page. */
+			$('.magiclink:first').click();
 		});
 	</script>
 </head>
@@ -33,14 +33,14 @@
 
 <div id="header">
     <div id="title">
-        <h1><a href="index.html">It's Chinese To Me</a></h1>
+	<a href="#how"><h1>It's Chinese to me</h1></a>
         <h2>A visual decoder for women's lives</h2>
     </div>
     
     <div class=topnav>
-        <a class="bloglink" href="#how">How does it work?</a> / 
-        <a class="bloglink" href="#about">About</a> / 
-        <a class="bloglink" href="#contact">Contact</a>
+        <a class="magiclink" href="#how">How does it work?</a> / 
+        <a class="magiclink" href="#about">About</a> / 
+        <a class="magiclink" href="#contact">Contact</a>
      </div>
 </div>
      
@@ -48,7 +48,7 @@
 	<ul>
 		<?php foreach ($this->blogs as $blog_id => $blog): ?>
 			<li class="bloginfo">
-				<a class="bloglink" href="#blog<?php echo $blog_id ?>"><img src="images/blogger<?php echo $blog_id ?>.jpg"/></a>
+				<a class="magiclink" href="#blog<?php echo $blog_id ?>"><img src="images/blogger<?php echo $blog_id ?>.jpg"/></a>
 				<span class="toggle blog<?php echo $blog_id ?> bloggerbio">
                     <p>
 					<?php echo $blog['intro'] ?>

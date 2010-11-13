@@ -52,3 +52,18 @@ a.ppimage {
     background-color: #000;
 }
 
+#logo {
+    padding: 40px;
+    border: 0;
+}
+
+#logo a {
+    color:transparent;
+    text-decoration: none;
+}
+
+#logo a:hover {
+    color:transparent;
+    text-decoration: none;
+    background-color: transparent;
+}

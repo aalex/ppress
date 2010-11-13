@@ -103,20 +103,22 @@ function get_words_for_post($post_id)
     mysql_free_result($result);
     return $ret;
 }
-
+/**
+ * each row in the array is a array of [text, word id]
+ */
 function get_all_words()
 {
 	$result = mysql_query('
-		SELECT DISTINCT `text` `word` FROM `word`
+		SELECT DISTINCT `text`, `word_id` FROM `word`
 		WHERE
 			`is_punctuation` = 0
 			AND `is_chinese` = 1
+        ORDER BY `post_id`
 		');
-
 	$words = array();
 	while ($row = mysql_fetch_assoc($result))
 	{
-		$words[] = $row['word'];
+		$words[] = array("word"=> $row['text'], "word_id" =>$row['word_id']);
 	}
 
 	return $words;
@@ -125,24 +127,31 @@ function get_all_words()
 function insert_image($url, $local)
 {
 	$info = getimagesize($local);
-	$width = array_shift($info);
-	$height = array_shift($info);
+    if (is_array($info))
+    {
+        $width = array_shift($info);
+        $height = array_shift($info);
 
-	query('INSERT INTO `image` (`original_image_url`, `local_image_name`, `image_width`, `image_height`) VALUES(:url, :name, :width, :height)', array(
-		':url' => $url,
-		':name' => $local,
-		':width' => $width,
-		':height' => $height,
-	));
+        query('INSERT INTO `image` (`original_image_url`, `local_image_name`, `image_width`, `image_height`) VALUES(:url, :name, :width, :height)', array(
+            ':url' => $url,
+            ':name' => $local,
+            ':width' => $width,
+            ':height' => $height,
+        ));
 
-	return mysql_insert_id();
+        return mysql_insert_id();
+    }
+    else 
+    {
+        return NULL;
+    }
 }
 
-function associate_word($word, $image_id)
+function associate_word($word_id, $image_id)
 {
-	query('UPDATE `word` SET `has_an_image` = 1, image_is_downloaded = 1, image_id = :image WHERE `text` = :word', array(
+	query('UPDATE `word` SET `has_an_image` = 1, image_is_downloaded = 1, image_id = :image WHERE `word_id` = :word_id', array(
 		':image' => $image_id,
-		':word' => $word,
+		':word_id' => $word_id,
 	));
 }
 

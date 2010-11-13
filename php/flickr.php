@@ -40,6 +40,8 @@ function download_file($remote, $local)
     fclose($fp);
 }
 
+
+
 /**
  * Returns the URL or the most relevant image for a given word.
  * @param $word: string

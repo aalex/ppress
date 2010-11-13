@@ -4,4 +4,4 @@
  
 <p>&gt; Choose a blogger above to see what she is saying</p>
 
-<p>Know a Chinese blogger that we should read? Submit it <a href="contact.tpl.php">here</a>.</p>
+<p>Know a Chinese blogger that we should read? Let us know <a class="magiclink" href="http://itschinesetome.net/index.php#contact">here</a>.</p>
